@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MenuSystem.Menu
 {
-    public abstract class Menu //Maybe give Menu it's own SubMenu
+    public abstract class Menu
     {
         protected GraphicsDevice device;
 
@@ -26,6 +26,10 @@ namespace MenuSystem.Menu
             }
         }
 
+        /// <summary>
+        /// Method to Call that will revert the MenuSystem back a specified amount
+        /// </summary>
+        /// <param name="count"></param>
         protected void RevertBy(int count)
         {
             RevertCount = count; 
@@ -104,33 +108,17 @@ namespace MenuSystem.Menu
                 onBack(this, EventArgs.Empty); 
         }
 
-        protected virtual void BackHandler(object sender, EventArgs e)
-        {
-             
-        }
+        /// <summary>
+        /// Event Handler for the Back button on the Phone's bottom panel. This must be handled properly to pass Windows Phone Certification
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void BackHandler(object sender, EventArgs e) {    }
 
         public virtual void Update(GameTime gametime, TouchCollection TC)
         {
             if (isActive)
             {
-                //if (Game.GlobalOptions.State == Game.GlobalOptions.GameState.None)
-                //{
-                //    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                //        RevertBy(1);
-                //}
-                //else
-                //{
-                //    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                //    {
-                //        if (SubMenu.ContainsKey("Pause"))
-                //        {
-                //            SubMenu.SetActive("Pause");
-                //            Game.GlobalOptions.SetState(Game.GlobalOptions.GameState.None); 
-                //        }
-                //    }
-                //}
-                    
-
                 SubMenu.Update(gametime, TC);
                 CheckforRevert(); 
             }
@@ -152,7 +140,7 @@ namespace MenuSystem.Menu
                 {
                     for (int i = 0; i < Buttons.Count; i++)
                     {
-                        Buttons.ElementAt(i).Value.Mouse_Check(TC);
+                        Buttons.ElementAt(i).Value.Touch_Check(TC);
                     }
                 }
             }
