@@ -50,10 +50,10 @@ namespace MenuSystem.Menu
                 SoundManager.Play_Click(); 
             }
 
-                isPressed = true;
+            isPressed = true;
         }
 
-        public virtual void Mouse_Check(TouchCollection TC)
+        public virtual void Touch_Check(TouchCollection TC)
         {
             foreach (TouchLocation TL in TC)
             {
