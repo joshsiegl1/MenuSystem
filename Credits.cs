@@ -14,7 +14,7 @@ namespace MenuSystem.Menu
     public class Credits : Menu
     {
         private const string Credit = "Programming, Art, and Design \n         by Josh Siegl" +
-           "\n\nGeneral play testing\n         by Harry Albright\n\nFor you Shelly <3"; 
+           "\n\nGeneral play testing\n         by Harry Albright\n\n"; 
 
         public Credits(GraphicsDevice device) 
             : base(device) 
